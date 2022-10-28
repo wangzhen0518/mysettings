@@ -4,3 +4,10 @@ pretty-errors
 matplotlib
 scalene
 latexify-py
+pip_search
+#code2flow
+
+# extra
+pdf2docx
+schedule
+
