@@ -1,0 +1,6 @@
+numpy
+pandas
+pretty-errors
+matplotlib
+scalene
+latexify-py
