@@ -5,9 +5,10 @@ matplotlib
 scalene
 latexify-py
 pip_search
+pip-review
 #code2flow
 
 # extra
 pdf2docx
 schedule
-
+taichi
