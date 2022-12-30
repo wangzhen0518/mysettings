@@ -13,7 +13,6 @@ Chrome
 FileZilla
 PlayMemories
 notepad++
-potplayer
 
 drive:
 NVIDIA

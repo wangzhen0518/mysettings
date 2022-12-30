@@ -1,0 +1,9 @@
+aida64
+cpuz
+gpuz
+furmark
+crystal-diskinfo
+crystal-diskmark
+hwinfo64
+hd tune pro
+thaiphoon
