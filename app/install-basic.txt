@@ -21,4 +21,4 @@ libboost-all-dev \
 libpng-dev \
 libpng++-dev \
 mysql-server \
-mysql-client \
+mysql-client 
