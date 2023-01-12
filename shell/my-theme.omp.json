@@ -5,27 +5,44 @@
       "alignment": "left",
       "segments": [
         {
-          "foreground": "cyan",
-          "style": "powerline",
-          "template": "{{ if .WSL }}WSL at {{ end }}{{.Icon}}",
-          "type": "os"
+          "foreground": "lightBlue",
+          "foreground_templates": [
+            "{{ if .Root }}lightRed{{ end }}"
+          ],
+          "properties": {
+            "display_host": true
+          },
+          "style": "plain",
+          "template": "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>\u250c\u2500\u2500(</>{{ .UserName }}{{ if .Root }}💀{{ else }}㉿{{ end }}{{ .HostName }}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>)</>",
+          "type": "session"
         },
         {
-          "foreground": "cyan",
+          "foreground": "yellow",
           "properties": {
+            "fetch_version": false,
+            "fetch_virtual_env": true
+          },
+          "style": "plain",
+          "template": "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>-[</>\ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }}{{ end }}{{ .Full }}{{ end }}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>]</>",
+          "type": "python"
+        },
+        {
+          "foreground": "lightWhite",
+          "properties": {
+            "folder_separator_icon": "<#c0c0c0>/</>",
             "style": "full"
           },
           "style": "plain",
-          "template": " {{ .Path }} ",
+          "template": "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>-[</>{{ .Path }}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>]</>",
           "type": "path"
         },
         {
-          "foreground": "#F1502F",
-          "properties": {
-            "fetch_status": true
-          },
+          "foreground": "white",
+		  "properties":{
+			  "fetch_status": true
+		  },
           "style": "plain",
-          "template": ":: {{ .HEAD }}{{ .BranchStatus }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }} ",
+          "template": "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>-[</>{{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}<{{ if .Root }}lightBlue{{ else }}green{{ end }}>]</>",
           "type": "git"
         }
       ],
@@ -34,7 +51,23 @@
     {
       "alignment": "right",
       "segments": [
+        {
+          "foreground": "white",
+          "properties": {
+            "always_enabled": true,
+            "style": "round"
+          },
+          "style": "plain",
+          "template": " {{ .FormattedMs }} ",
+          "type": "executiontime"
+        },
 		{
+          "foreground": "lightGreen",
+          "style": "plain",
+          "template": "| {{ .CurrentDate | date .Format }} ",
+          "type": "time"
+        },
+        {
           "foreground": "green",
           "foreground_templates": [
             "{{ if gt .Code 0 }}red{{ end }}"
@@ -43,67 +76,8 @@
             "always_enabled": true
           },
           "style": "plain",
-          "template": " {{ if gt .Code 0 }}\u2a2f{{else}}\u2713{{ end }} ",
+          "template": "| {{ if gt .Code 0 }}\u2a2f{{else}}\u2713{{ end }} ",
           "type": "exit"
-        },
-		{
-          "foreground": "#f09000",
-          "invert_powerline": true,
-          "properties": {
-            "always_enabled": true
-          },
-          "style": "powerline",
-          "template": "| {{ .FormattedMs }} ",
-          "type": "executiontime"
-        },
-	    {
-          "foreground": "red",
-          "style": "plain",
-          "template": "| root ",
-          "type": "root"
-        },
-        {
-          "foreground": "#06A4CE",
-          "style": "powerline",
-          "template": "| \ue798 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }} ",
-          "type": "dart"
-        },
-        {
-          "foreground": "#6CA35E",
-          "style": "powerline",
-          "template": "| \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
-          "type": "node"
-        },
-        {
-          "foreground": "#4584b6",
-          "properties": {
-            "display_mode": "context",
-            "fetch_virtual_env": true
-          },
-          "style": "plain",
-          "template": "| \ue235 {{ .Venv }} ",
-          "type": "python"
-        },
-        {
-          "foreground_templates": [
-            "{{if eq \"Charging\" .State.String}}#4caf50{{end}}",
-            "{{if eq \"Discharging\" .State.String}}#40c4ff{{end}}",
-            "{{if eq \"Full\" .State.String}}#ff0000{{end}}"
-          ],
-          "invert_powerline": true,
-          "properties": {
-            "charged_icon": "\uf00d ",
-            "charging_icon": "\ue234 "
-          },
-          "style": "powerline",
-          "template": "| {{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }} \uf295 ",
-          "type": "battery"
-        },
-        {
-          "foreground": "lightGreen",
-          "style": "plain",
-          "template": "| {{ .CurrentDate | date .Format }} ",
-          "type": "time"
         }
       ],
       "type": "prompt"
@@ -113,16 +87,10 @@
       "newline": true,
       "segments": [
         {
-          "foreground": "lightGreen",
-          "foreground_templates": [
-            "{{ if gt .Code 0 }}red{{ end }}"
-          ],
-          "properties": {
-            "always_enabled": true
-          },
-          "style": "powerline",
-          "template": "\u279c ",
-          "type": "exit"
+          "foreground": "lightBlue",
+          "style": "plain",
+          "template": "<{{ if .Root }}lightBlue{{ else }}green{{ end }}>\u2514\u2500</>{{ if .Root }}<lightRed>#</>{{ else }}${{ end }} ",
+          "type": "text"
         }
       ],
       "type": "prompt"
