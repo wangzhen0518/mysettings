@@ -198,7 +198,7 @@
         {
             "bellStyle": "none",
             "closeOnExit": "always",
-            "colorScheme": "Novel",
+            "colorScheme": "Ayu Mirage",
             "font": 
             {
                 "face": "Hack Nerd Font"
@@ -953,5 +953,6 @@
         }
     ],
     "tabWidthMode": "titleLength",
-    "useAcrylicInTabRow": true
+    "useAcrylicInTabRow": true,
+	"confirmCloseAllTabs":false
 }
