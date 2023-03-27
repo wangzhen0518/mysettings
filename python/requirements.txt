@@ -1,14 +1,14 @@
 ipython
 numpy
 pandas
-pretty-errors
 matplotlib
+
+pretty-errors
 scalene
-latexify-py
 pip_search
 pip-review
 #code2flow
-
+# latexify-py
 # extra
 #pdf2docx
 #schedule
