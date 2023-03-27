@@ -133,15 +133,17 @@ alias gcc="gcc -Wall"
 alias g++="g++ -Wall"
 export PATH=~/.local/bin:$PATH
 
-# wsl
-export BROWSER=wslview
+function proxy_on(){
+	sudo service v2raya start
+	export HTTP_PROXY_OLD=$HTTP_PROXY
+	export HTTPS_PORXY_OLD=$HTTPS_PROXY
+	export HTTP_PROXY="http://127.0.0.1:20171"
+	export HTTPS_PROXY="https://127.0.0.1:20171"
+}
 
-# riscv
-alias rgcc="riscv64-unknown-elf-gcc"
-alias rg++="riscv64-unknown-elf-g++"
-alias rgdb="riscv64-unknown-elf-gdb"
-alias robjdump="riscv64-unknown-elf-objdump"
-alias rqemu="qemu-system-riscv64"
-export RISCV=/opt/riscv-gnu-toolchain
-export PATH=$RISCV/bin:$PATH
-export PATH=/opt/qemu/bin:$PATH
+function proxy_off(){
+	sudo service v2raya stop
+	export HTTP_PROXY=$HTTP_PROXY_OLD
+	export HTTPS_PROXY=$HTTPS_PROXY_OLD
+}
+

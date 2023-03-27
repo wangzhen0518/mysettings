@@ -1,0 +1,12 @@
+Linux:
+1. 输入法
+2. apt换源
+5. vpn
+6. chrome
+5. nerd hack字体 安装
+3. git安装
+4. github, gitee添加ssh-key
+3. zsh安装
+4. nvdia驱动
+7. 
+
