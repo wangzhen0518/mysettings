@@ -79,7 +79,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
 	git
-	git-open
+#	git-open
 	gitignore
 	z
 	zsh-autosuggestions
@@ -88,6 +88,7 @@ plugins=(
 	extract
 	cp
 	command-not-found
+	docker
 	safe-paste
 	colored-man-pages
 	sudo
@@ -126,24 +127,90 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/wangzhen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/wangzhen/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/wangzhen/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/wangzhen/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
 # my settings
 alias reload="source ~/.zshrc"
-alias gcc="gcc -Wall"
-alias g++="g++ -Wall"
-export PATH=~/.local/bin:$PATH
+#alias gcc="gcc -Wall"
+#alias g++="g++ -Wall"
+
+export PATH="$HOME/.local/bin":$PATH
+
+export UROOT="$HOME/.pkg"
+export PATH=$UROOT/bin:$PATH
+export LIBRARY=$UROOT/lib:$LIBRARY
+export LD_LIBRARY_PATH=$UROOT/lib:$LD_LIBRARY_PATH
+export LD_RUN_PATH=$UROOT/lib:$LD_RUN_PATH
+export C_INCLUDE_PATH=$UROOT/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$UROOT/include:$CPLUS_INCLUDE_PATH
+
+# cuda
+export CUDA_PATH="/usr/local/cuda"
+export PATH=$CUDA_PATH/bin:$PATH
+export LD_LIBRARY_PATH=$CUDA_PATH/lib64:$LD_LIBRARY_PATH
+export LIBRARY=$CUDA_PATH/lib64:$LIBRARY
+export LD_RUN_PATH=$CUDA_PATH/lib64:$LD_RUN_PATH
+export C_INCLUDE_PATH=$CUDA_PATH/include:$C_INCLUDE_PATH
+export CPLUS_INCLUDE_PATH=$CUDA_PATH/include:$CPLUS_INCLUDE_PATH
+
+# wsl
+# export BROWSER=wslview
+
+# riscv
+#alias rgcc="riscv64-unknown-elf-gcc"
+#alias rg++="riscv64-unknown-elf-g++"
+#alias rgdb="riscv64-unknown-elf-gdb"
+#alias robjdump="riscv64-unknown-elf-objdump"
+#alias rqemu="qemu-system-riscv64"
+#export RISCV=/opt/riscv-gnu-toolchain
+#export PATH=$RISCV/bin:$PATH
+#export PATH=/opt/qemu/bin:$PATH
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node"
+
+
+# OpenROAD
+export OPENROAD="/home/wangzhen/Project/OpenROAD-flow-scripts/tools/install"
+export PATH=${OPENROAD}/OpenROAD/bin:${OPENROAD}/yosys/bin:${OPENROAD}/LSOracle/bin:$PATH
+
+# GUI
+#export DISPLAY=:0.0
+#export LIBGL_ALWAYS_INDIRECT=1
+
+# MIRA
+export MIRA="zwang@202.38.69.241:~/Downloads"
 
 function proxy_on(){
-	sudo service v2raya start
-	export HTTP_PROXY_OLD=$HTTP_PROXY
-	export HTTPS_PORXY_OLD=$HTTPS_PROXY
-	export HTTP_PROXY="http://127.0.0.1:20171"
-	export HTTPS_PROXY="https://127.0.0.1:20171"
+	$HTTP_PROXY="http://127.0.0.1:10809"
+	$HTTPS_PROXY="https://127.0.0.1:10809"
+	#set HTTP_PROXY="http://127.0.0.1:10809"
+	#set HTTPS_PROXY="https://127.0.0.1:10809"
+	#SetEnvironmentVariable("HTTP_PROXY", "http://127.0.0.1:10809", "User")
+	#SetEnvironmentVariable("HTTPS_PROXY", "https://127.0.0.1:10809", "User")
 }
-
 function proxy_off(){
-	sudo service v2raya stop
-	export HTTP_PROXY=$HTTP_PROXY_OLD
-	export HTTPS_PROXY=$HTTPS_PROXY_OLD
+	$HTTP_PROXY=""
+	$HTTPS_PROXY=""
+	#set HTTP_PROXY=
+	#set HTTPS_PROXY=
+	#SetEnvironmentVariable("HTTP_PROXY", $null, "User")
+	#SetEnvironmentVariable("HTTPS_PROXY", $null, "User")
 }
 
+export TORCH_HOME="$HOME/Package/torch"

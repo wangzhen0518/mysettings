@@ -13,7 +13,7 @@ esac
 HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-# shopt -s histappend
+shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-shopt -s globstar
+#shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -116,57 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# nodejs settings
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This load nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 . "$HOME/.cargo/env"
-
-# PATH
-export PATH=$PATH:~/.local/bin
-
-# riscv
-# export RISCV=/opt/riscv/
-
-
-# riscv-gnu-toolchain
-export PATH=$PATH:/opt/riscv-gnu-toolchain/bin
-alias rgcc="riscv64-unknown-elf-gcc"
-alias rgdb="riscv64-unknown-elf-gdb"
-alias rg++="riscv64-unknown-elf-g++"
-alias robjdump="riscv64-unknown-elf-objdump"
-
-# riscv-pk
-export PATH=$PATH:$RISCV/simulator/riscv64-unknown-elf/bin
-
-# riscv-simulator
-export PATH=$PATH:$RISCV/simulator/bin
-
-# gem5
-alias riscv64-gem5='/home/wangzhen0518/WangZhen/Project/gem5/build/RISCV/gem5.opt /home/wangzhen0518/WangZhen/Project/gem5/configs/example/se.py -c'
-
-# qemu
-export PATH=$PATH:/opt/qemu/bin
-
-# go
-export PATH=$PATH:/usr/local/go/bin
-# export GO111MODULE=on
-# export GOPROXY=https://goproxy.io
-# export GOROOT=/usr/local/go
-# export GOPATH=~/WangZhen/Project/blockchainlab-2022/lab2/template
-
-# cuda
-export CUDA_HOME=/usr/local/cuda-11.7
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_HOME/lib64
-export PATH=$PATH:$CUDA_HOME/bin
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/wangzhen0518/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/wangzhen0518/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/wangzhen0518/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/wangzhen0518/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
