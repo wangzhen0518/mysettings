@@ -147,8 +147,6 @@ alias reload="source ~/.zshrc"
 #alias gcc="gcc -Wall"
 #alias g++="g++ -Wall"
 
-export PATH="$HOME/.local/bin":$PATH
-
 export UROOT="$HOME/.pkg"
 export PATH=$UROOT/bin:$PATH
 export LIBRARY=$UROOT/lib:$LIBRARY
@@ -194,7 +192,7 @@ export PATH=${OPENROAD}/OpenROAD/bin:${OPENROAD}/yosys/bin:${OPENROAD}/LSOracle/
 #export LIBGL_ALWAYS_INDIRECT=1
 
 # MIRA
-export MIRA="zwang@202.38.69.241:~/Downloads"
+export MIRA="zhenwang@202.38.69.241:~/Downloads"
 
 function proxy_on(){
 	$HTTP_PROXY="http://127.0.0.1:10809"
