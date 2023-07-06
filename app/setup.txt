@@ -36,6 +36,7 @@ winhex
 rufus - u盘制作工具
 runcat - github
 wsl-notify-send
+TranslucentTB
 
 WSL
 VMware Workstation
