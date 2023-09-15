@@ -7,6 +7,8 @@ pretty-errors
 scalene
 pip_search
 pip-review
+pipreqs
+loguru
 #code2flow
 # latexify-py
 # extra
