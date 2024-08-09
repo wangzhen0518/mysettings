@@ -126,33 +126,14 @@ Set-Alias -Name touch -Value New-Item
 Invoke-Expression (&scoop-search --hook)
 #-------------------------------    Set Scoop END     -------------------------------
 
-
-#-------------------------------   Set Conda BEGIN    -------------------------------
-#region conda initialize
-# !! Contents within this block are managed by 'conda init' !!
-#(& "D:\Developer\miniconda3\Scripts\conda.exe" "shell.powershell" "hook") | Out-String | Invoke-Expression
-#endregion
-
-#conda activate ml
-#conda deactivate
-#-------------------------------   Set Conda END  ----------------------------------
-
 #-------------------------------   Set Network BEGIN    -------------------------------
 function proxy_on {
 	$env:HTTP_PROXY="http://127.0.0.1:10809"
 	$env:HTTPS_PROXY="https://127.0.0.1:10809"
-	#set HTTP_PROXY="http://127.0.0.1:10809"
-	#set HTTPS_PROXY="https://127.0.0.1:10809"
-	#SetEnvironmentVariable("HTTP_PROXY", "http://127.0.0.1:10809", "User")
-	#SetEnvironmentVariable("HTTPS_PROXY", "https://127.0.0.1:10809", "User")
 }
 function proxy_off{
 	$env:HTTP_PROXY=""
 	$env:HTTPS_PROXY=""
-	#set HTTP_PROXY=
-	#set HTTPS_PROXY=
-	#SetEnvironmentVariable("HTTP_PROXY", $null, "User")
-	#SetEnvironmentVariable("HTTPS_PROXY", $null, "User")
 }
 
 function ssh-copy-id([string]$userAtMachine, $args){   
@@ -170,8 +151,6 @@ function my_port_forward{
     ssh -L $args[0]:localhost:$args[0] -p 33111 zhenwang@202.38.69.241
 
 }
-
-Set MIRA "zhenwang@202.38.69.241:~/Downloads"
 
 #-------------------------------   Set Network END  ----------------------------------
 

@@ -30,4 +30,4 @@ custom_channels:
 #    pytorch: https://mirrors.aliyun.com/anaconda/cloud
 #    simpleitk: https://mirrors.aliyun.com/anaconda/cloud
 
-#auto_activate_base: false
+auto_activate_base: false

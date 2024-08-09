@@ -129,14 +129,14 @@ source $ZSH/oh-my-zsh.sh
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/wangzhen/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/wangzhen/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/wangzhen/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/wangzhen/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -164,51 +164,18 @@ export LD_RUN_PATH=$CUDA_PATH/lib64:$LD_RUN_PATH
 export C_INCLUDE_PATH=$CUDA_PATH/include:$C_INCLUDE_PATH
 export CPLUS_INCLUDE_PATH=$CUDA_PATH/include:$CPLUS_INCLUDE_PATH
 
-# wsl
-# export BROWSER=wslview
-
-# riscv
-#alias rgcc="riscv64-unknown-elf-gcc"
-#alias rg++="riscv64-unknown-elf-g++"
-#alias rgdb="riscv64-unknown-elf-gdb"
-#alias robjdump="riscv64-unknown-elf-objdump"
-#alias rqemu="qemu-system-riscv64"
-#export RISCV=/opt/riscv-gnu-toolchain
-#export PATH=$RISCV/bin:$PATH
-#export PATH=/opt/qemu/bin:$PATH
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NVM_NODEJS_ORG_MIRROR="https://npm.taobao.org/mirrors/node"
 
-
-# OpenROAD
-export OPENROAD="/home/wangzhen/Project/OpenROAD-flow-scripts/tools/install"
-export PATH=${OPENROAD}/OpenROAD/bin:${OPENROAD}/yosys/bin:${OPENROAD}/LSOracle/bin:$PATH
-
-# GUI
-#export DISPLAY=:0.0
-#export LIBGL_ALWAYS_INDIRECT=1
-
-# MIRA
-export MIRA="zhenwang@202.38.69.241:~/Downloads"
-
 function proxy_on(){
 	$HTTP_PROXY="http://127.0.0.1:10809"
 	$HTTPS_PROXY="https://127.0.0.1:10809"
-	#set HTTP_PROXY="http://127.0.0.1:10809"
-	#set HTTPS_PROXY="https://127.0.0.1:10809"
-	#SetEnvironmentVariable("HTTP_PROXY", "http://127.0.0.1:10809", "User")
-	#SetEnvironmentVariable("HTTPS_PROXY", "https://127.0.0.1:10809", "User")
 }
 function proxy_off(){
 	$HTTP_PROXY=""
 	$HTTPS_PROXY=""
-	#set HTTP_PROXY=
-	#set HTTPS_PROXY=
-	#SetEnvironmentVariable("HTTP_PROXY", $null, "User")
-	#SetEnvironmentVariable("HTTPS_PROXY", $null, "User")
 }
 
 export TORCH_HOME="$HOME/Package/torch"
