@@ -1,1 +1,0 @@
-git config --global --add url."git@github.com:".insteadOf "https://github.com/"
